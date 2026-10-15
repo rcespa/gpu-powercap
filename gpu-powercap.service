@@ -1,0 +1,12 @@
+[Unit]
+Description=GPU power caps at boot (MI50 210W, R9700 210W)
+After=multi-user.target
+# amdgpu driver must be up and /dev/kfd usable before rocm-smi works
+
+[Service]
+Type=oneshot
+ExecStart=/opt/scripts/gpu-powercap/gpu-powercap.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
